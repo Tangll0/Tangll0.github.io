@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="唐林林" />
+
+
+
+<meta name="description" content="同步&amp;amp;异步、自定义模块
++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJs核心模块">
+<meta property="og:url" content="http://tanglinlin.top/2015/03/18/NodeJs核心模块/index.html">
+<meta property="og:site_name" content="Tango-Blog">
+<meta property="og:description" content="同步&amp;amp;异步、自定义模块
++">
+<meta property="og:updated_time" content="2017-04-01T09:16:57.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJs核心模块">
+<meta name="twitter:description" content="同步&amp;amp;异步、自定义模块
++">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Tango-Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>NodeJs核心模块 | Tango-Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/timg.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">唐林林</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Web、Android</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:tangll@tanglinlin.top" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/RoseTang0" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端、Android</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">唐林林</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/timg.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">唐林林</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Web、Android</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:tangll@tanglinlin.top" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/RoseTang0" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-NodeJs核心模块" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/18/NodeJs核心模块/" class="article-date">
+      <time datetime="2015-03-18T11:53:32.000Z" itemprop="datePublished">2015-03-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NodeJs核心模块
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>同步&amp;异步、自定义模块</p>
+<h2 id=""><a href="#" class="headerlink" title="+ "></a>+ <a id="more"></a></h2><h1 id="NodeJS核心模块之Query-Strings模块"><a href="#NodeJS核心模块之Query-Strings模块" class="headerlink" title="NodeJS核心模块之Query Strings模块"></a>NodeJS核心模块之Query Strings模块</h1><p>  作用:处理客户端通过<code>get/post</code>请求传递过来的参数</p>
+<p>  使用关键点:<br>    1.需要导入 ‘querystring’ 这个核心模块<br>    2.<code>get</code>请求时 querystring 一般是配合 url 核心模块一起使用的<br>    3.<code>get/post</code>请求最终都需要调用 querystring.parse方法,<br>    将请求传递过来的键值对字符串转成js对象,方便操作</p>
+<p>  注意:<br>    get/post的请求方式是不一样的,客户端传递过来时,参数放在<br>    的地方是不一样的,所以服务器端处理方式也不太一样</p>
+<hr>
+<h1 id="GET-POST的再次复习与回顾"><a href="#GET-POST的再次复习与回顾" class="headerlink" title="GET/POST的再次复习与回顾"></a>GET/POST的再次复习与回顾</h1><p>  相同点:<br>    1.发送网络请求<br>    2.可以给服务器传递参数</p>
+<p>  不同点:<br>    传参的方式不一样<br>      GET:<br>        <a href="http://127.0.0.1/login?username=zhangsan&amp;password=123" target="_blank" rel="external">http://127.0.0.1/login?username=zhangsan&amp;password=123</a><br>        请求体中是没有内容的</p>
+<pre><code>  POST:
+    http://127.0.0.1/login
+    参数放在请求体 username=zhangsan&amp;password=123
+
+传参的长度
+  GET:有限制 256KB
+  POST:理论上没限制,但是每个服务器规定不一样 Apache 5M
+
+缓存方式
+  GET:有缓存
+  POST:没有,因为POST主要用来给服务器提交数据,而这些数据是动态变化的
+
+安全性方面
+  GET:很不安全
+  POST:相对安全
+</code></pre><p>  应用场景:<br>    1.GET 当单纯向服务器获取数据的时候,一般用GET,因为有缓存,效率高<br>    2.POST 一般用在提交数据给服务器<br>    3.根据公司后台人员给的API文档来</p>
+<hr>
+<h1 id="NodeJS核心模块之File-System模块"><a href="#NodeJS核心模块之File-System模块" class="headerlink" title="NodeJS核心模块之File System模块"></a>NodeJS核心模块之File System模块</h1><p>  前提:以后的所有静态资源(html,css,js,图片等)都是放在服务端<br>  的,如果浏览器需要这些html,css,js,图片等资源,则需要先将其读<br>  取到node.exe的内容中,然后再返回给浏览器</p>
+<p>  作用:<br>    在服务端来操作文件,可能是需要将浏览器上传的图片保存到服<br>    务器,也可能是需要将服务器的资源读取之后返回给浏览器</p>
+<p>  代码步骤:<br>    1.导入 fs 核心模块<br>    2.使用相应的方法来写入文件、读取文件等操作</p>
+<p>  注意点:<br>    目录 fs它是不会自动帮我们创建的需要我们自己手工创建<br>    文件如果不存在,调用writeFile与appendFile方法会自动帮<br>    我们创建</p>
+<hr>
+<h1 id="NodeJS核心模块之Path模块"><a href="#NodeJS核心模块之Path模块" class="headerlink" title="NodeJS核心模块之Path模块"></a>NodeJS核心模块之Path模块</h1><p>  作用:操作文件的路径,为文件操作服务</p>
+<p>  常用的几个函数:<br>    path.join(第一个路径,第二个路径) : 拼接路径</p>
+<hr>
+<h1 id="NodeJS核心模块之Global模块"><a href="#NodeJS核心模块之Global模块" class="headerlink" title="NodeJS核心模块之Global模块"></a>NodeJS核心模块之Global模块</h1><p>  作用:全局共享的,不需要导入模块即可以使用</p>
+<p>  常用的属性:<br>    <strong>dirname : 文件所在的文件夹路径
+    </strong>filename : 文件所在的路径<br>    require() : 导入需要的模块<br>    module : 自定义模块时用到<br>    exports : 自定义模块时用到</p>
+<hr>
+<h1 id="乱码"><a href="#乱码" class="headerlink" title="乱码"></a>乱码</h1><p>  原因:保存时候的编码和读取时候的编码不一致</p>
+<p>  解决办法:保存和读取的时候使用同一种编码就可以了  GBK —&gt; GBK</p>
+<p>  开发建议:以后无论是保存文件还是读取文件都是用UTF-8</p>
+<hr>
+<h1 id="字符集-amp-编码"><a href="#字符集-amp-编码" class="headerlink" title="字符集&amp;编码"></a>字符集&amp;编码</h1><p>  编码是字符集的实现</p>
+<p>  ASICC码:键盘上看得到的 a-z A-Z 0-9 !@#$% </p>
+<p>  ISO-8859-1 欧洲计算机协会 英文</p>
+<p>  汉字<br>    简体:GB2312(5千多个汉字)/GBK(2万)<br>    繁体:大五码 Big-5</p>
+<p>  日语:<br>    xxx</p>
+<p>  韩国:<br>    ooo</p>
+<p>  UTF-8 200万个,基本上就已经囊括了世界上所有的语言</p>
+<hr>
+<h1 id="NodeJS里面的编码"><a href="#NodeJS里面的编码" class="headerlink" title="NodeJS里面的编码"></a>NodeJS里面的编码</h1><p>  只支持<br>    ASCII 键盘上看得到的<br>    HEX 16进制<br>    UTF-8 推荐使用UTF-8<br>    ISO-8859-1  欧洲计算机协会</p>
+<p>  不支持<br>    GB2312/GBK,解决办法,在npmjs上面找第三方包,iconv-lite</p>
+<hr>
+<h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h1><p>  概念:<br>    用来管理nodejs第三方包的一个工具</p>
+<p>  注意:<br>    一般情况下,安装了node之后,都会安装npm,npm所在的位置一般在<br>    C:\Program Files\nodejs\node_modules</p>
+<pre><code>如果在终端中输入 npm -v 有反映就表示成功了
+</code></pre><hr>
+<h1 id="npm操作之从npmjs-com中安装-下载包"><a href="#npm操作之从npmjs-com中安装-下载包" class="headerlink" title="npm操作之从npmjs.com中安装/下载包"></a>npm操作之从npmjs.com中安装/下载包</h1><p>  npm在安装好nodejs之后,就会在nodejs安装目录的node_moules目录下自动帮我们安装好了npm这个包</p>
+<p>  安装包/下载包分两种</p>
+<pre><code>本地安装:用在当前项目中
+命令:npm install 包的名称
+
+
+全局安装:以后在终端中使用
+命令:npm install -g 包名称
+</code></pre><hr>
+<h1 id="nrm"><a href="#nrm" class="headerlink" title="nrm"></a>nrm</h1><p>  相当于镜像</p>
+<p>  npm install [-g] 包名称   默认情况下去npmjs.com下载包</p>
+<p>  nrm ls 可以查看有哪些镜像,并且当前使用的是哪个镜像</p>
+<p>  cnpm 的使用<br>    步骤1:安装cnpm的全局包 npm install -g cnpm</p>
+<pre><code>步骤2:
+</code></pre><hr>
+<h1 id="cnpm-与-npm-的区别"><a href="#cnpm-与-npm-的区别" class="headerlink" title="cnpm 与 npm 的区别"></a>cnpm 与 npm 的区别</h1><p>  相同点:都是管理nodejs第三方包的网站</p>
+<p>  不同点:<br>    npm 是正宗<br>    cnpm 是淘宝团队开发的</p>
+<p>  <a href="https://npm.taobao.org" target="_blank" rel="external">https://npm.taobao.org</a> 这个网站的所有内容来自哪里npmjs.com</p>
+<pre><code>安装包的方式不一样
+  npm : npm install [-g] 包名称
+  cnpm : cnpm install [-g] 包名称
+
+注意点:
+  npmjs.com 既可以从他上面 下载包,也可以往它上面传我们自己写的包
+  https://npm.taobao.org  是一个只读的,只能下载,不能上传
+
+应用场景:
+  一般情况下 使用 npmjs.com
+  特殊情况下 使用 https://npm.taobao.org 
+</code></pre><h1 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步&amp;异步"></a>同步&amp;异步</h1><p>  例子:<br>    我在上课的过程中想喝水</p>
+<pre><code>最终的目的:
+  拿到水
+
+同步的方式:我先停止停止上课,我自己去开水房打水,然后边上课,边喝水
+
+异步的方式:我还是继续上课,请程龙大哥给我打水,然后给我,我喝水
+</code></pre><p>  同步:<br>    我们每天写的代码 90%都是同步,同步有一个特点一件一件事情<br>    的做,比如代码从上而下依次执行,这就是一个同步的体现</p>
+<p>  异步特点:<br>    能同时做几件事<br>    异步都是要有回调函数来做后续的处理<br>    NodeJS中异步函数可以嵌套</p>
+<p>  异步适合的场景:<br>    耗时间操作用异步比较合适,比如文件操作,网络请求</p>
+<hr>
+<h1 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h1><p>  require() 导入fs的核心模块、第三方模块、自定义模块<br>    导入自定义的模块,需要加上路径及拓展名</p>
+<p>  module.exports 导出单个对象/属性/函数</p>
+<p>  exports.xxx = xxx 可以导出一个或是多个对象/属性/函数</p>
+<p>  注意点:<br>    module.exports与exports 都可以导出对象/属性/函数,但是一个适合导出单个,另外一个适合导出一个或是多个</p>
+<pre><code>通过require()导入另外一个自定义模块,其实是导入另外一个自定义模块中`exports`所指向的东西,这点特别重要,要理解
+</code></pre><hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/03/18/NodeJs核心模块/">NodeJs核心模块</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">唐林林</a></p>
+        <p><span>发布时间:</span>2015-03-18, 19:53:32</p>
+        <p><span>最后更新:</span>2015-03-18, 19:53:32</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/03/18/NodeJs核心模块/" title="NodeJs核心模块">http://tanglinlin.top/2015/03/18/NodeJs核心模块/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://tanglinlin.top/2015/03/18/NodeJs核心模块/　　作者: 唐林林" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/03/19/NodeJs-require-http/">
+                    NodeJs-require-http
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/03/16/NodeJs初探/">
+                    NodeJs初探
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">+ </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS核心模块之Query-Strings模块"><span class="toc-number"></span> <span class="toc-text">NodeJS核心模块之Query Strings模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GET-POST的再次复习与回顾"><span class="toc-number"></span> <span class="toc-text">GET/POST的再次复习与回顾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS核心模块之File-System模块"><span class="toc-number"></span> <span class="toc-text">NodeJS核心模块之File System模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS核心模块之Path模块"><span class="toc-number"></span> <span class="toc-text">NodeJS核心模块之Path模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS核心模块之Global模块"><span class="toc-number"></span> <span class="toc-text">NodeJS核心模块之Global模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#乱码"><span class="toc-number"></span> <span class="toc-text">乱码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符集-amp-编码"><span class="toc-number"></span> <span class="toc-text">字符集&编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS里面的编码"><span class="toc-number"></span> <span class="toc-text">NodeJS里面的编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#npm"><span class="toc-number"></span> <span class="toc-text">npm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#npm操作之从npmjs-com中安装-下载包"><span class="toc-number"></span> <span class="toc-text">npm操作之从npmjs.com中安装/下载包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nrm"><span class="toc-number"></span> <span class="toc-text">nrm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cnpm-与-npm-的区别"><span class="toc-number"></span> <span class="toc-text">cnpm 与 npm 的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步-amp-异步"><span class="toc-number"></span> <span class="toc-text">同步&异步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义模块"><span class="toc-number"></span> <span class="toc-text">自定义模块</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"NodeJs核心模块　| Tango-Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/03/19/NodeJs-require-http/" title="上一篇: NodeJs-require-http">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/03/16/NodeJs初探/" title="下一篇: NodeJs初探">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2015/03/24/NodeJs-session-MD5/">NodeJs-session-MD5</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/22/NodeJs-mongodb/">NodeJs-mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/20/NodeJs-express/">NodeJs-express</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/19/NodeJs-require-http/">NodeJs-require-http</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/18/NodeJs核心模块/">NodeJs核心模块</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/16/NodeJs初探/">NodeJs初探</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/15/Angular-4/">Angular-4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/14/Angular-3/">Angular-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/12/Angular-2/">Angular-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/11/Angular-1/">Angular-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/10/初始Angular/">初始Angular</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/06/CSS新属性3/">CSS新属性3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/05/CSS新属性-2/">CSS新属性(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/02/CSS3新属性/">CSS3新属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/01/认识Html5/">认识Html5</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/15/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2015-2017 唐林林
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

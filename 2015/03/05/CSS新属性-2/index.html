@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="唐林林" />
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS新属性(2)">
+<meta property="og:url" content="http://tanglinlin.top/2015/03/05/CSS新属性-2/index.html">
+<meta property="og:site_name" content="Tango-Blog">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/luqqab991dn2hxkgirbz7a1g/image_1an0e8vgc1n4i9veu7jtb6toq9.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/4kxwmwubmaupukbpyuqhj3o6/image_1an0fif8v18kfh2t1ule19001f7m9.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/tyb3w9aymeedw8epucux8eve/image_1an0fjmiqecp1m5e18a8f9ic0m.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/8e52h3elcrdweowlpsxdvo6w/image_1an0fsv74cj8vu7hdbj7hnhm9.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/bw9ccg0dkq5snctklxl277ev/%E5%9B%BE%E7%89%871.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/r9wbuu6b1v8g1gh8i120usto/%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF.gif">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/ehwv0jf5hzdop9w0emdwziqh/QQ%E6%88%AA%E5%9B%BE20160606164142.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/zv445t28mnx9slmi04pmddpo/border.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/tt21czsvr9w4p5ml6tw6mz8r/border-image-slice.gif">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/myghxvfow47qq7ddvy1js8oz/border-image-slice.png">
+<meta property="og:image" content="http://static.zybuluo.com/antumuFish/v7z0exnyn65obt70x77lv236/%E5%9B%BE%E7%89%87%E9%87%8D%E5%A4%8D.png">
+<meta property="og:updated_time" content="2017-04-01T08:21:01.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS新属性(2)">
+<meta name="twitter:image" content="http://static.zybuluo.com/antumuFish/luqqab991dn2hxkgirbz7a1g/image_1an0e8vgc1n4i9veu7jtb6toq9.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Tango-Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>CSS新属性(2) | Tango-Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/timg.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">唐林林</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Web、Android</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:tangll@tanglinlin.top" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/RoseTang0" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端、Android</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">唐林林</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/timg.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">唐林林</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Web、Android</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:tangll@tanglinlin.top" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/RoseTang0" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-CSS新属性-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/05/CSS新属性-2/" class="article-date">
+      <time datetime="2015-03-05T12:47:09.000Z" itemprop="datePublished">2015-03-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS新属性(2)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index=""> </excerpt></p>
+<ul>
+<li><a id="more"></a>
+<the rest="" of="" contents文=""><h1 id="CSS3帮助手册"><a href="#CSS3帮助手册" class="headerlink" title="CSS3帮助手册"></a>CSS3帮助手册</h1></the></li>
+</ul>
+<blockquote>
+<p>CSS3一致在持续进化中，我们可以通过帮助文档去学习CSS3,下面把常用的文档罗列一下：</p>
+</blockquote>
+<ul>
+<li><a href="http://www.w3school.com.cn/css3/index.asp" target="_blank" rel="external">w3school_css3</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="external">Mozilla开发者网络</a></li>
+<li><a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a></li>
+</ul>
+<h1 id="背景-background"><a href="#背景-background" class="headerlink" title="背景-background"></a>背景-background</h1><blockquote>
+<p>在CSS3中针对Background推出了多个新增的用法，接下来我们看看这些新的属性</p>
+</blockquote>
+<h2 id="新增属性"><a href="#新增属性" class="headerlink" title="新增属性"></a>新增属性</h2><blockquote>
+<p>部分是有修改的，部分是新增的,其中CSS3中新增了很多好用的属性</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/antumuFish/luqqab991dn2hxkgirbz7a1g/image_1an0e8vgc1n4i9veu7jtb6toq9.png" alt="backGroundCSS3新增属性"></p>
+<ul>
+<li><p><strong>background-clip</strong>:</p>
+<ul>
+<li>将背景设置好后,通过这个属性可以把多余的背景切掉</li>
+</ul>
+</li>
+<li><p><strong>background-size</strong>:</p>
+<ul>
+<li>设置背景的大小,通过这个属性可以使用多张图片作为背景,关于如何设置多张图片,可以查看多重背景</li>
+<li>示例:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/* 宽度10 高度根据宽度计算 */</div><div class="line">background-size: 10px;</div><div class="line">/* 宽度10 高度 10 */</div><div class="line">background-size: 10px 10px;</div><div class="line">/* 背景图片原始大小 */</div><div class="line">background-size: auto;</div><div class="line">/* 背景图片原比例缩放到完全填满 可能会超出 */</div><div class="line">background-size: cover;</div><div class="line">/* 背景图片原比例缩放到 高度 或者宽度 跟容器一样 可能会有空白 */</div><div class="line">background-size: contain;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>background-repeat</strong><ul>
+<li>在原来只能设置平铺,不平铺的基础上,增加了两个属性,让我们在设置背景图时更为灵活<ul>
+<li>示例:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/* 自动缩放 直到填满 */</div><div class="line">background-repeat:round;</div><div class="line">/* 两个方法都缩放,知道某一边充满容器为止 */</div><div class="line">background-repeat:space;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>background-size</strong></li>
+</ul>
+<blockquote>
+<p>设置图片大小,顾名思义就是图片大小而已</p>
+</blockquote>
+<ul>
+<li><p><strong>background-origin</strong></p>
+<ul>
+<li>核心代码如下: 下面只列举了div的样式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">          background-image:url(&apos;img/01.jpg&apos;);</div><div class="line">          background-repeat: no-repeat;</div><div class="line">          background-size: 50px 50px;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>border-box</strong>: 从边线开始</li>
+</ul>
+<p><img src="http://static.zybuluo.com/antumuFish/4kxwmwubmaupukbpyuqhj3o6/image_1an0fif8v18kfh2t1ule19001f7m9.png" alt="image"></p>
+<ul>
+<li><strong>padding-box</strong>: 从padding开始</li>
+</ul>
+<p><img src="http://static.zybuluo.com/antumuFish/tyb3w9aymeedw8epucux8eve/image_1an0fjmiqecp1m5e18a8f9ic0m.png" alt="image"></p>
+<ul>
+<li><strong>content-box</strong>: 从内容开始</li>
+</ul>
+<p><img src="http://static.zybuluo.com/antumuFish/8e52h3elcrdweowlpsxdvo6w/image_1an0fsv74cj8vu7hdbj7hnhm9.png" alt="image"></p>
+<h1 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h1><blockquote>
+<p>注意渐变产生的是图像,换句话来说,所有可以设置图像的地方都能够使用它,能够减少我们页面图片的使用,兼容性不错.</p>
+</blockquote>
+<h2 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h2><blockquote>
+<p>顾名思义,就是朝着某个方向发生进行渐变</p>
+</blockquote>
+<ul>
+<li>语法:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/*语法组合方式 可以添加多个颜色*/</div><div class="line">background-image: linear-gradient(方向,开始颜色 开始位置 ,颜色2 开始位置,颜色3 开始位置.....);</div><div class="line"></div><div class="line"></div><div class="line">/* 具体代码  */</div><div class="line">/* 朝着 右上角 从红色到黄色*/</div><div class="line">background-image: linear-gradient(to top left,red,yellow);</div><div class="line"></div><div class="line">/* 朝着 顺时针45度 从红色到黄色*/</div><div class="line">background-image: linear-gradient(45deg,red,yellow);</div><div class="line"></div><div class="line">/* 朝着 顺时针45度 红色,黄色,绿色*/</div><div class="line">background-image: linear-gradient(45deg,red,yellow,green);</div><div class="line"></div><div class="line">/* 朝着 顺时针45度 红色到 10px结束 黄色从 20px开始 */</div><div class="line">background-image: linear-gradient(45deg,red 10px,yellow 20px);</div><div class="line"></div><div class="line">/* 朝着 顺时针45度 红色到10%结束 黄色从 20%开始 */</div><div class="line">background-image: linear-gradient(45deg,red 10%,yellow 20%);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>注意</strong>:<ul>
+<li>如果上一个颜色的结束,跟下一个颜色的开始相等,那么不会出现过度</li>
+<li>比如:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-image: linear-gradient(45deg,red 10%,yellow 10%);</div></pre></td></tr></table></figure>
+<h2 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h2><blockquote>
+<p>指的是以某个点作为圆心,向四周扩散的渐变</p>
+</blockquote>
+<ul>
+<li><strong>语法</strong>:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/* 圆形渐变写法 */</div><div class="line">background:radial-gradient(半径  ,颜色1,颜色2等等);</div><div class="line"></div><div class="line">/* 椭圆渐变写法 */</div><div class="line">background:radial-gradient(横向半径,竖向半径  ,颜色1,颜色2等等);</div><div class="line"></div><div class="line">/*具体代码*/</div><div class="line">/*半径100px 红色 绿色*/</div><div class="line">background:radial-gradient(100px,red,green);</div><div class="line"></div><div class="line">/*横向半径100px 竖向半径200px 红色 绿色*/</div><div class="line">background:radial-gradient(100px 200px,red,green);</div><div class="line"></div><div class="line">/*横向半径100px  红色10px 绿色 20px*/</div><div class="line">background:radial-gradient(100px 200px,red 10px,green 20px);</div><div class="line"></div><div class="line">/*横向半径100px  红色10% 绿色20%*/</div><div class="line">background:radial-gradient(100px 200px,red 10%,green 10%);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>注意</strong>:<ul>
+<li>跟线性渐变一样如果上一个颜色的结束,跟下一个颜色的开始相等,那么不会出现过度</li>
+<li>比如:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-image: radial-gradient(100px,red 10%,yellow 10%);</div></pre></td></tr></table></figure>
+<h1 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h1><blockquote>
+<p>CSS3中最让人激动的属性之一,基本上可以实现所有CSS属性的动画效果</p>
+</blockquote>
+<h2 id="transition-1"><a href="#transition-1" class="headerlink" title="transition"></a>transition</h2><blockquote>
+<p>帧动画的本质其实就是画面一张张的切换,由于速度关系,肉眼分辨不出,所以看起来就是连续的画面,transition干的,其实就是类似的事情 <img src="http://static.zybuluo.com/antumuFish/bw9ccg0dkq5snctklxl277ev/%E5%9B%BE%E7%89%871.png" alt="image"></p>
+</blockquote>
+<ul>
+<li>语法:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*语法组合方式*/</div><div class="line">transition:过渡CSS属性 持续时间 动画方式 延迟时间;</div><div class="line"></div><div class="line">/* 多属性过渡组合写法  通过逗号分隔*/</div><div class="line">transition:过渡1,过渡2....</div><div class="line"></div><div class="line">/*具体代码*/</div><div class="line"></div><div class="line">/* 所有属性 1s动画 ease-in动画方式 延迟1s*/</div><div class="line">transition: all 1s ease-in 1s;</div><div class="line"></div><div class="line">/*</div><div class="line">top属性 1s动画 ease-in动画方式 </div><div class="line">left属性 1s动画 ease-out动画方式 延迟1s</div><div class="line">width属性 1s动画 liner动画方式 延迟2s</div><div class="line">height属性 1s动画 ease-in-out动画方式 延迟3s </div><div class="line">background-Color属性 1s动画 ease动画方式 延迟4s </div><div class="line">*/</div><div class="line">transition: top 1s ease-in,</div><div class="line">            left 1s  ease-out 1s,</div><div class="line">            width 1s  ease-liner 2s,</div><div class="line">            height 1s  ease-in-out 3s;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>动画方式</strong>:<br><img src="http://static.zybuluo.com/antumuFish/r9wbuu6b1v8g1gh8i120usto/%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF.gif" alt="动画的效果如下 动画曲线"></li>
+<li><strong>贝塞尔曲线动画</strong><ul>
+<li>在设置动画曲线的位置通过cubic-bezier()的方式进行设置</li>
+<li><a href="http://cubic-bezier.com/" target="_blank" rel="external">计算贝塞尔曲线在线网址</a></li>
+<li>语法:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/* 其中 需要传入四个值,并且每个值都是0-1的小数*/</div><div class="line">transition: top 1s cubic-bezier(0.1,0.2,0.3,0.4);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>step动画</strong><ul>
+<li>除了可以使用贝塞尔曲线设置外,我们还能够设置过渡的动画次数</li>
+<li>语法:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/* 1s动画 每隔 1/6 s 完成一次  在每次间隔的 末尾 开始动画  */</div><div class="line">transition: top 1s steps(6,end);</div><div class="line">/* 1s动画 每隔 1/6 s 完成一次  在每次间隔的 开始 开始动画  */</div><div class="line">transition: top 1s steps(6,start);</div></pre></td></tr></table></figure>
+<h1 id="transform-2d"><a href="#transform-2d" class="headerlink" title="transform_2d"></a>transform_2d</h1><blockquote>
+<p>在CSS3中,提供了变换这个属性transform,能够让我们更为灵活的操纵html元素,而不需要去考虑布局的问题</p>
+</blockquote>
+<h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><blockquote>
+<p>主要就是三个方法</p>
+</blockquote>
+<ul>
+<li>语法:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/* translate: 移动 第二个参数不传默认为0 */</div><div class="line">transform:translate(x,y);</div><div class="line"></div><div class="line">/* scale: 缩放 传递的是比例 比如 2倍,1.5倍,0.5倍等等 */</div><div class="line">transform:scale(x,y);</div><div class="line"></div><div class="line">/*rotate: 旋转 传递的是角度  360deg等于一圈*/</div><div class="line">transform:rotate(angle);</div><div class="line">/*skew: 斜方向扭曲 传递的是角度 360deg等于一圈 第二个参数不传默认为0*/</div><div class="line">transform:skew(xAngle,yAngle);</div><div class="line"></div><div class="line">/* 多个值 通过空格分隔*/</div><div class="line">tranform:translate(10px,10px) rotate(180deg) scale(1.5,1.5);</div><div class="line">## transform-origin</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个属性指定的是移动时,以什么原点作为标准</p>
+</blockquote>
+<ul>
+<li>语法:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*x:50px y:中心 作为原点*/</div><div class="line">transform-origin:50px;</div><div class="line"></div><div class="line">/*x:50px y:50px 作为原点*/</div><div class="line">transform-origin:50px 50px;</div><div class="line"></div><div class="line">/*x:10% y:20% 作为原点*/</div><div class="line">transform-origin:10% 20%;</div><div class="line"></div><div class="line">/* 传入单词 </div><div class="line">可选:top,left,right,center,bottom</div><div class="line">*/</div><div class="line">/* 左上 作为原点 */</div><div class="line">transform-origin:right top;</div><div class="line">/* 中心作为原点 */</div><div class="line">transform-origin:center center;</div></pre></td></tr></table></figure>
+<h1 id="图片边框"><a href="#图片边框" class="headerlink" title="图片边框"></a>图片边框</h1><blockquote>
+<p>在没有border-image属性之前,元素边框的设置就是各种不同分隔的点,当时当你掌握了这个属性以后,还是能够做出一些精美的效果的</p>
+</blockquote>
+<p>完整写法</p>
+<blockquote>
+<p>同样隶属于border家族,border-image支持简写</p>
+</blockquote>
+<ul>
+<li>示例代码:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.borImage&#123;</div><div class="line">            border-image: url(&quot;img/border_image_2.png&quot;) 17 / 17px / 17px round;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<h2 id="组成属性"><a href="#组成属性" class="headerlink" title="组成属性"></a>组成属性</h2><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>border-image-source</td>
+<td>图片路径(url)</td>
+</tr>
+<tr>
+<td>border-image-slice</td>
+<td>图片切片</td>
+</tr>
+<tr>
+<td>border-image-width</td>
+<td>图片宽度</td>
+</tr>
+<tr>
+<td>border-image-outset</td>
+<td>图片外凸</td>
+</tr>
+<tr>
+<td>border-image-repeat</td>
+<td>图片重复</td>
+</tr>
+</tbody>
+</table>
+<h2 id="border-image-source属性"><a href="#border-image-source属性" class="headerlink" title="border-image-source属性"></a>border-image-source属性</h2><ul>
+<li><p><strong>值</strong>:</p>
+<ul>
+<li>none或者url(“地址”)</li>
+<li>默认值为:none</li>
+<li>作用:图片路径</li>
+</ul>
+</li>
+<li><strong>示例代码</strong>:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.borImage&#123;</div><div class="line">            border-image-source: url(&quot;img/border_image_2.png&quot;);</div><div class="line">            &#125;</div><div class="line">            /*如果只是单纯的设置该属性,真的很难看*/</div></pre></td></tr></table></figure>
+<h2 id="border-image-slice属性"><a href="#border-image-slice属性" class="headerlink" title="border-image-slice属性"></a>border-image-slice属性</h2><ul>
+<li><p>值:</p>
+<ul>
+<li>1-4个值(不需要单位),对应的关系跟margin一致</li>
+<li>1-4个百分比,对应的关系跟margin一致</li>
+<li>fill(可选):是否需要中间的区域</li>
+<li>作用:设置图片的切片大小</li>
+</ul>
+</li>
+<li>示例代码:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.borImage&#123;</div><div class="line">          border-image-source: url(&quot;img/border_image_2.png&quot;);</div><div class="line">          border-image-slice: 27 ;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/antumuFish/ehwv0jf5hzdop9w0emdwziqh/QQ%E6%88%AA%E5%9B%BE20160606164142.png" alt="image"></p>
+<ul>
+<li>工作原理:<ul>
+<li>这个属性设置了以后就能够看到效果了,这里我们用这样图片作为演示</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://static.zybuluo.com/antumuFish/zv445t28mnx9slmi04pmddpo/border.png" alt="image"></p>
+<ul>
+<li>我们设置的值,相当于将这张图片切割为九宫格,这张图片的分辨率为81<em>81 其中81=27</em>3</li>
+</ul>
+<p><img src="http://static.zybuluo.com/antumuFish/tt21czsvr9w4p5ml6tw6mz8r/border-image-slice.gif" alt="image"></p>
+<ul>
+<li><p>九宫格切法为<br>border-image-slice.gif-2kB</p>
+</li>
+<li><p>当我们使用图片设置为边框时</p>
+<ul>
+<li>保证四个角不变,根据图片的拉伸效果进行改变</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://static.zybuluo.com/antumuFish/myghxvfow47qq7ddvy1js8oz/border-image-slice.png" alt="image"></p>
+<ul>
+<li><p>注:如果使用的是百分比,那么切割的时候就是按照总宽度的百分比来计算,其他的都是一致的</p>
+<h2 id="border-image-width属性"><a href="#border-image-width属性" class="headerlink" title="border-image-width属性"></a>border-image-width属性</h2></li>
+<li><p>值:</p>
+<ul>
+<li>可选</li>
+<li>1-4个值,单位为(px,em,%),对应关系跟margin一致</li>
+<li>设置图片边框的宽度</li>
+<li>设置了宽度以后,以该宽度为准</li>
+<li>作用:设置图片边框的宽度</li>
+<li>注:<ul>
+<li>在chrome中使用有异常,如果不设置border的宽度,就无法使用该属性<h2 id="border-image-outset属性"><a href="#border-image-outset属性" class="headerlink" title="border-image-outset属性"></a>border-image-outset属性</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>值:</p>
+<ul>
+<li>1-4个值,单位为(px,em,%),对应关系跟margin一致</li>
+<li>作用:设置图片边框的向外延伸的值</li>
+<li>注:<ul>
+<li>不能为负值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>示例代码:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.borImage&#123;</div><div class="line">       border-image-source: url(&quot;img/border.png&quot;);</div><div class="line">       border-image-slice: 27 ;</div><div class="line">       border-image-width: 27px;</div><div class="line">       border-image-outset: 27px;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<h2 id="border-image-repeat属性"><a href="#border-image-repeat属性" class="headerlink" title="border-image-repeat属性"></a>border-image-repeat属性</h2><ul>
+<li>值:<ul>
+<li>stretch(拉伸默认) 或 repeat(重复) 或 round(环绕)</li>
+</ul>
+</li>
+<li>示例代码:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.borImage&#123;</div><div class="line">            border-image-source: url(&quot;img/border.png&quot;);</div><div class="line">            border-image-slice: 27 ;</div><div class="line">            border-image-width: 27px;</div><div class="line">            border-image-outset: 27px;</div><div class="line">            /*border-image-repeat: repeat;*/</div><div class="line">            border-image-repeat: stretch;</div><div class="line">            /*border-image-repeat: round;*/</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/antumuFish/v7z0exnyn65obt70x77lv236/%E5%9B%BE%E7%89%87%E9%87%8D%E5%A4%8D.png" alt="image"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/03/05/CSS新属性-2/">CSS新属性(2)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">唐林林</a></p>
+        <p><span>发布时间:</span>2015-03-05, 20:47:09</p>
+        <p><span>最后更新:</span>2015-03-05, 20:47:09</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/03/05/CSS新属性-2/" title="CSS新属性(2)">http://tanglinlin.top/2015/03/05/CSS新属性-2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://tanglinlin.top/2015/03/05/CSS新属性-2/　　作者: 唐林林" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/03/06/CSS新属性3/">
+                    CSS新属性3
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/03/02/CSS3新属性/">
+                    CSS3新属性
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS3帮助手册"><span class="toc-number">1.</span> <span class="toc-text">CSS3帮助手册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#背景-background"><span class="toc-number">2.</span> <span class="toc-text">背景-background</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新增属性"><span class="toc-number">2.1.</span> <span class="toc-text">新增属性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#渐变"><span class="toc-number">3.</span> <span class="toc-text">渐变</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性渐变"><span class="toc-number">3.1.</span> <span class="toc-text">线性渐变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#径向渐变"><span class="toc-number">3.2.</span> <span class="toc-text">径向渐变</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#transition"><span class="toc-number">4.</span> <span class="toc-text">transition</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#transition-1"><span class="toc-number">4.1.</span> <span class="toc-text">transition</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#transform-2d"><span class="toc-number">5.</span> <span class="toc-text">transform_2d</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#transform"><span class="toc-number">5.1.</span> <span class="toc-text">transform</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图片边框"><span class="toc-number">6.</span> <span class="toc-text">图片边框</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#组成属性"><span class="toc-number">6.1.</span> <span class="toc-text">组成属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#border-image-source属性"><span class="toc-number">6.2.</span> <span class="toc-text">border-image-source属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#border-image-slice属性"><span class="toc-number">6.3.</span> <span class="toc-text">border-image-slice属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#border-image-width属性"><span class="toc-number">6.4.</span> <span class="toc-text">border-image-width属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#border-image-outset属性"><span class="toc-number">6.5.</span> <span class="toc-text">border-image-outset属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#border-image-repeat属性"><span class="toc-number">6.6.</span> <span class="toc-text">border-image-repeat属性</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"CSS新属性(2)　| Tango-Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/03/06/CSS新属性3/" title="上一篇: CSS新属性3">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/03/02/CSS3新属性/" title="下一篇: CSS3新属性">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2015/03/24/NodeJs-session-MD5/">NodeJs-session-MD5</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/22/NodeJs-mongodb/">NodeJs-mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/20/NodeJs-express/">NodeJs-express</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/19/NodeJs-require-http/">NodeJs-require-http</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/18/NodeJs核心模块/">NodeJs核心模块</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/16/NodeJs初探/">NodeJs初探</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/15/Angular-4/">Angular-4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/14/Angular-3/">Angular-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/12/Angular-2/">Angular-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/11/Angular-1/">Angular-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/10/初始Angular/">初始Angular</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/06/CSS新属性3/">CSS新属性3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/05/CSS新属性-2/">CSS新属性(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/02/CSS3新属性/">CSS3新属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/01/认识Html5/">认识Html5</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/15/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2015-2017 唐林林
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
